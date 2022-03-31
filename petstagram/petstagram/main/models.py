@@ -1,3 +1,4 @@
+from django.core.validators import MinLengthValidator
 from django.db import models
 
 
@@ -9,6 +10,10 @@ class Profile(models.Model):
 
     first_name = models.CharField(
         max_length=FIRST_NAME_MAX_LENGTH,
+        validators=(
+            MinLengthValidator(FIRST_NAME_MIN_LENGTH),
+
+        )
     )
 
     last_name = models.CharField(
