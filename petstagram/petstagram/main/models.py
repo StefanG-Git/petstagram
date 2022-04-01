@@ -48,4 +48,9 @@ class Profile(models.Model):
         blank=True,
     )
 
-    gender = models.
+    gender = models.CharField(
+        max_length=max(len(x) for x, _ in GENDERS),
+        choices=GENDERS,
+        null=True,
+        blank=True,
+    )
