@@ -49,11 +49,41 @@ class Profile(models.Model):
     )
 
     gender = models.CharField(
-        max_length=max(len(x) for x, _ in GENDERS),
+        max_length=max(len(x) for (x, _) in GENDERS),
         choices=GENDERS,
         null=True,
         blank=True,
     )
 
 
-# class Pet(models.Model):
+class Pet(models.Model):
+    NAME_MAX_LENGTH = 30
+
+    CAT = 'Cat'
+    DOG = 'Dog'
+    BUNNY = 'Bunny'
+    PARROT = 'Parrot'
+    FISH = 'Fish'
+    OTHER = 'Other'
+
+    TYPES = [(x, x) for x in (CAT, DOG, BUNNY, PARROT, FISH, OTHER)]
+
+    name = models.CharField(
+        max_length=NAME_MAX_LENGTH,
+        unique=True,
+    )
+
+    type = models.CharField(
+        max_length=max(len(x) for (x, _) in TYPES),
+
+    )
+
+    date_of_birth = models.DateField(
+        null=True,
+        blank=True,
+    )
+
+    user_profile = models.ForeignKey(
+        Profile,
+        on_delete=models.CASCADE,
+    )
