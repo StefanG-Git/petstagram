@@ -54,3 +54,6 @@ class Profile(models.Model):
         null=True,
         blank=True,
     )
+
+
+# class Pet(models.Model):
