@@ -55,6 +55,9 @@ class Profile(models.Model):
         blank=True,
     )
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
 
 class Pet(models.Model):
     NAME_MAX_LENGTH = 30
@@ -75,7 +78,7 @@ class Pet(models.Model):
 
     type = models.CharField(
         max_length=max(len(x) for (x, _) in TYPES),
-
+        choices=TYPES,
     )
 
     date_of_birth = models.DateField(
@@ -87,3 +90,7 @@ class Pet(models.Model):
         Profile,
         on_delete=models.CASCADE,
     )
+
+    class Meta:
+        unique_together = ('user_profile', 'name',)
+
