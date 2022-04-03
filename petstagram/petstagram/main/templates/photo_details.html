@@ -6,7 +6,7 @@
                  class="w-100 rounded mx-auto d-block" alt="{{ pet_photo.description }}">
         </div>
         <div class="d-inline p-2 w-50">
-            {% for pet in pet_photo.tagget_pets.all %}
+            {% for pet in pet_photo.tagged_pets.all %}
                 <div class="d-flex justify-content-around">
                     <h5><u>Type:</u> {{ pet.type }}</h5>
                     <h5><u>Name:</u> {{ pet.name }}</h5>
@@ -15,14 +15,9 @@
                     {% endif %}
                 </div>
             {% endfor %}
-            <!-- Description -->
-            <p class="mt-2">Description: This is Andrew the cat, and Otto the dog. There are in the park, laying on the
-                grass.</p>
-            <!-- Likes Button -->
-            <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-            <!-- Likes Counter -->
-            <p class="mt-2">Likes: 21</p>
-            <!-- Buttons -->
+            <p class="mt-2">{{ pet_photo.description }}</p>
+            <a href="{% url 'like pet photo'  pet_photo.id %}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+            <p class="mt-2">Likes: {{ pet_photo.likes }}</p>
             <a href="#" class="btn btn-primary">Edit</a>
             <a href="#" class="btn btn-danger">Delete</a>
         </div>
