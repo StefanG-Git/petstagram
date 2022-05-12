@@ -14,7 +14,6 @@
             <div class="row mb-5">
                 {% for pet_photo in pet_photos %}
                     <div class="card ml-3 mb-3" style="width: 18rem;">
-                        <!-- Image -->
                         <img src="{{ pet_photo.photo.url }}"
                              class="card-img-top" alt="Photo description">
                         <div class="card-body">
@@ -23,9 +22,7 @@
                                     {{ pet.age }}
                                 {% endif %} </h5>
                             {% endfor %}
-                            <!-- First 30 chars from the description -->
                             <p class="card-text">{{ pet_photo.description|truncatechars:30 }}</p>
-                            <!-- Button to the Photo Details Page -->
                             <a href="{% url 'pet photo details' pet_photo.id %}" class="btn btn-primary">See details</a>
                         </div>
                     </div>
@@ -34,9 +31,7 @@
         </div>
     {% else %}
         <div class=" row d-flex justify-content-center align-content-center">
-            <!-- Button to Add a new Photo -->
             <a href="#" class="btn btn-lg btn-secondary row align-self-baseline">Add Photo</a>
         </div>
     {% endif %}
-
 {% endblock %}
