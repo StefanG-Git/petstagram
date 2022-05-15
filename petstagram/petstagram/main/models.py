@@ -19,6 +19,7 @@ class Profile(models.Model):
 
     first_name = models.CharField(
         max_length=FIRST_NAME_MAX_LENGTH,
+        verbose_name='First Name',
         validators=(
             MinLengthValidator(FIRST_NAME_MIN_LENGTH),
             validate_only_letters,
@@ -27,22 +28,21 @@ class Profile(models.Model):
 
     last_name = models.CharField(
         max_length=LAST_NAME_MAX_LENGTH,
+        verbose_name='Last Name',
         validators=(
             MinLengthValidator(LAST_NAME_MIN_LENGTH),
             validate_only_letters,
         )
     )
 
-    picture = models.URLField()
+    picture = models.URLField(
+        verbose_name='Link to Profile Picture'
+    )
 
     date_of_birth = models.DateField(
         null=True,
         blank=True,
-    )
-
-    description = models.TextField(
-        null=True,
-        blank=True,
+        verbose_name='Date of Birth',
     )
 
     email = models.EmailField(
@@ -53,6 +53,11 @@ class Profile(models.Model):
     gender = models.CharField(
         max_length=max(len(x) for (x, _) in GENDERS),
         choices=GENDERS,
+        null=True,
+        blank=True,
+    )
+
+    description = models.TextField(
         null=True,
         blank=True,
     )
@@ -76,6 +81,7 @@ class Pet(models.Model):
     name = models.CharField(
         max_length=NAME_MAX_LENGTH,
         unique=True,
+        verbose_name='Pet Name',
     )
 
     type = models.CharField(
@@ -86,6 +92,7 @@ class Pet(models.Model):
     date_of_birth = models.DateField(
         null=True,
         blank=True,
+        verbose_name='Day of Birth',
     )
 
     user_profile = models.ForeignKey(
