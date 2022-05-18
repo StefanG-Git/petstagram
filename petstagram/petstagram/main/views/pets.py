@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from petstagram.main.helpers import get_profile
 from petstagram.main.models import Pet
-from petstagram.main.templates.forms import CreatePetForm, EditPetForm, DeletePetForm
+from petstagram.main.forms import CreatePetForm, EditPetForm, DeletePetForm
 
 
 def pet_action(request, form_class, success_url_name, instance, template_name):
